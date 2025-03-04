@@ -1,0 +1,41 @@
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling of the entire container */
+    position: fixed; /* Lock the entire container */
+    top: 0;
+    left: 0;
+  }
+  
+  .graph-container {
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 50%; /* Fixed width, no growing or shrinking */
+  }
+  
+  .text-container {
+    width: 50%;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from center to avoid shifting */
+    align-items: center;
+    box-sizing: border-box;
+    flex: 0 0 50%; /* Fixed width, no growing or shrinking */
+    overflow-y: auto; /* Allow scrolling if content exceeds container */
+  }
+  
+  .node-text {
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    min-height: 2em;
+    max-height: 70vh; /* Set a maximum height */
+    overflow-wrap: break-word;
+    overflow-y: auto; /* Enable scrolling for very long text */
+  }
