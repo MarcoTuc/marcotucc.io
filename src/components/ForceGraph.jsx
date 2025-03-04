@@ -83,6 +83,23 @@ const ForceGraph = ({
         event.stopPropagation();
         setSelectedNodeId(d.id);
         onNodeSelect(d);
+        
+        // Center the clicked node by applying a zoom transform
+        const svgElement = svgRef.current;
+        const svgBounds = svgElement.getBoundingClientRect();
+        const centerX = width / 2;
+        const centerY = height / 2;
+        
+        // Calculate the transform needed to center the node
+        const scale = d3.zoomTransform(svgElement).k;  // Maintain the current zoom level
+        const translateX = centerX - d.x * scale;
+        const translateY = centerY - d.y * scale;
+        
+        // Animate to the new centered position
+        d3.select(svgElement)
+          .transition()
+          .duration(750)  // Animation duration in milliseconds
+          .call(zoom.transform, d3.zoomIdentity.translate(translateX, translateY).scale(scale));
       });
     
     // Add tooltip titles
